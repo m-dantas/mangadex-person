@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { LoginForm } from '../types/Login';
+import { LoginForm } from '../../types/Login';
 
 type Auth = {
   access_token: string
