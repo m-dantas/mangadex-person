@@ -1,21 +1,23 @@
-<div class="container">
-    <form [formGroup]="forms" (ngSubmit)="handleSubmit()">
-        <div class="login__form-control">
-            <label for="username">Username</label>
-            <input id="username" type="text" formControlName="username">
-        </div>
-        <div class="login__form-control">
-            <label for="password">Password</label>
-            <input id="password" type="password" formControlName="password">
-        </div>
-        <div class="login__form-control">
-            <label for="client_secret">Client Secret</label>
-            <input id="client_secret" type="password" formControlName="client_secret">
-        </div>
-        <div class="login__form-control">
-            <label for="client_id">Client Id</label>
-            <input id="client_id" type="password" formControlName="client_id">
-        </div>
-        <button type="submit">Entrar</button>
+<div class="login container">    
+    <form class="formulario" [formGroup]="forms" (ngSubmit)="handleSubmit()">
+        <img src="assets/mangadex-logo.svg" width="100px" height="100px" alt="icone do mangadex, é um gato">
+        <h1>MyDex</h1>
+        <mat-form-field>
+            <mat-label>Username</mat-label>
+            <input matInput placeholder="Username" formControlName="username">
+        </mat-form-field>
+        <mat-form-field>
+            <mat-label>Password</mat-label>
+            <input matInput placeholder="Password" type="password" formControlName="password">
+        </mat-form-field>
+        <mat-form-field>
+            <mat-label>Client Secret</mat-label>
+            <input matInput placeholder="Client Secret" type="password" formControlName="client_secret">
+        </mat-form-field>
+        <mat-form-field>
+            <mat-label>Client Id</mat-label>
+            <input matInput placeholder="Client Id" type="password" formControlName="client_id">
+        </mat-form-field>
+        <button mat-flat-button type="submit">Entrar</button>
     </form>
 </div>
