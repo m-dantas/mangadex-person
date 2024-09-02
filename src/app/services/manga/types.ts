@@ -8,7 +8,9 @@ export interface MangaList {
 }
 
 type attributes = {
-    title: {},
+    title: {
+        en: string
+    },
     altTitles: [],
     description: { en: string },
     isLocked: boolean,
@@ -48,5 +50,5 @@ export type Manga = {
     id: string,
     type: string,
     attributes: attributes,
-    relationships: relationships
+    relationships: relationships[]
 }

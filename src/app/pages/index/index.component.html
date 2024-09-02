@@ -1,1 +1,5 @@
-{{ mangas }}
+<div class="home container">
+    @for (manga of mangas; track $index) {
+        <app-card [title]="manga.attributes.title.en" [cover_url]="coverUrl(manga)" [manga_id]="manga.id"></app-card>
+    }
+</div>

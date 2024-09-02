@@ -1,12 +1,12 @@
 import { Component } from '@angular/core';
 import { MangaService } from '../../services/manga/manga.service';
 import { Manga } from '../../services/manga/types';
-import { CommonModule } from '@angular/common';
+import { CardComponent } from '../../components/card/card.component';
 
 @Component({
   selector: 'app-index',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CardComponent],
   templateUrl: './index.component.html',
   styleUrl: './index.component.scss'
 })
@@ -17,5 +17,10 @@ export class IndexComponent {
 
   ngOnInit () {
     this.mangaService.list(1).subscribe(res => this.mangas = res.data)
+  }
+
+  coverUrl (manga: Manga) {
+    const filename = manga.relationships.find(item => item.type === 'cover_art')?.attributes?.fileName
+    return `https://uploads.mangadex.org/covers/${manga.id}/${filename}`
   }
 }
