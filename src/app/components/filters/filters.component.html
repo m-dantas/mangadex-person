@@ -1,0 +1,57 @@
+<div class="filters">
+    <button mat-flat-button extended (click)="handleShow()">
+        Filters
+        <mat-icon>filter_alt</mat-icon>
+    </button>
+    @if (show) {
+        <div class="filters__modal">
+            <mat-form-field class="full-width" appearance="outline">
+                <mat-label>Search</mat-label>
+                <input matInput type="search">
+            </mat-form-field>
+            <div class="filters__modal__type">
+                <h6>Content</h6>
+                <mat-chip-listbox>
+                    @for (content of filters.content; track content) {
+                        <mat-chip-option>
+                            {{ content.attributes.name.en }}
+                        </mat-chip-option>
+                    }
+                </mat-chip-listbox>
+            </div>
+            <div class="filters__modal__type">
+                <h6>Format</h6>
+                <mat-chip-listbox>
+                    @for (format of filters.format; track format) {
+                        <mat-chip-option>
+                            {{ format.attributes.name.en }}
+                        </mat-chip-option>
+                    }
+                </mat-chip-listbox>
+            </div>
+            <div class="filters__modal__type">
+                <h6>Genre</h6>
+                <mat-chip-listbox>
+                    @for (genre of filters.genre; track genre) {
+                        <mat-chip-option>
+                            {{ genre.attributes.name.en }}
+                        </mat-chip-option>
+                    }
+                </mat-chip-listbox>
+            </div>
+            
+            <div class="filters__modal__type">
+                <h6>Theme</h6>
+                <mat-chip-listbox>
+                    @for (theme of filters.theme; track theme) {
+                        <mat-chip-option>
+                            {{ theme.attributes.name.en }}
+                        </mat-chip-option>
+                    }
+                </mat-chip-listbox>
+            </div>
+            <button mat-flat-button class="mt">Search</button>
+        </div>
+        <div class="filters__background" (click)="handleShow()"></div>
+    }
+</div>
