@@ -1,5 +1,8 @@
 <div class="home container">
-    @for (manga of mangas; track $index) {
-        <app-card [title]="manga.attributes.title.en" [cover_url]="coverUrl(manga)" [manga_id]="manga.id"></app-card>
-    }
+    <app-filters></app-filters>
+    <div class="home__manga-grid">
+        @for (manga of mangas; track $index) {
+            <app-card [title]="manga.attributes.title.en" [cover_url]="coverUrl(manga)" [manga_id]="manga.id"></app-card>
+        }
+    </div>
 </div>

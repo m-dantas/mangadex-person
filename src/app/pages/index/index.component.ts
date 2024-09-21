@@ -2,11 +2,11 @@ import { Component } from '@angular/core';
 import { MangaService } from '../../services/manga/manga.service';
 import { Manga } from '../../services/manga/types';
 import { CardComponent } from '../../components/card/card.component';
-
+import { FiltersComponent } from '../../components/filters/filters.component';
 @Component({
   selector: 'app-index',
   standalone: true,
-  imports: [CardComponent],
+  imports: [CardComponent, FiltersComponent],
   templateUrl: './index.component.html',
   styleUrl: './index.component.scss'
 })
