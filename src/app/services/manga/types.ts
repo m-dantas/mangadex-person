@@ -1,12 +1,3 @@
-export interface MangaList {
-    data: Manga[],
-    limit: number,
-    offset: number,
-    response: string,
-    result: string,
-    total: number
-}
-
 type attributes = {
     title: {
         en: string
