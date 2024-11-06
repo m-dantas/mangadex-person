@@ -12,7 +12,7 @@ import { FiltersComponent } from '../../components/filters/filters.component';
 })
 export class IndexComponent {
   mangas: Manga[] = [];
-  
+
   constructor(private mangaService: MangaService){}
 
   ngOnInit () {
@@ -21,6 +21,11 @@ export class IndexComponent {
 
   coverUrl (manga: Manga) {
     const filename = manga.relationships.find(item => item.type === 'cover_art')?.attributes?.fileName
-    return `https://uploads.mangadex.org/covers/${manga.id}/${filename}`
+    return `${manga.id}/${filename}.256.jpg`
+  }
+
+  handleGetMangaFiltered (params: string) {
+    this.mangas = []
+    this.mangaService.list(1, params).subscribe(res => this.mangas = res.data)
   }
 }

@@ -1,57 +1,62 @@
 <div class="filters">
-    <button mat-flat-button extended (click)="handleShow()">
+    <button mat-flat-button extended (click)="handleScrollBar()">
         Filters
         <mat-icon>filter_alt</mat-icon>
     </button>
-    @if (show) {
+    @if (showScrollBar) {
         <div class="filters__modal">
             <mat-form-field class="full-width" appearance="outline">
                 <mat-label>Search</mat-label>
-                <input matInput type="search">
+                <input matInput type="search" name="search" [formControl]="search">
             </mat-form-field>
-            <div class="filters__modal__type">
-                <h6>Content</h6>
-                <mat-chip-listbox>
-                    @for (content of filters.content; track content) {
-                        <mat-chip-option>
-                            {{ content.attributes.name.en }}
-                        </mat-chip-option>
-                    }
-                </mat-chip-listbox>
+            <div class="filters__modal__types">
+                <div class="filters__modal__types__type">
+                    <h6>Content</h6>
+                    <mat-chip-listbox multiple>
+                        @for (content of filters.content; track content) {
+                            <mat-chip-option
+                                (click)="handleOptionFilter('content', $index)"
+                                [selected]="content.selected"
+                            >
+                                {{ content.attributes.name.en }} {{ content.selected }}
+                            </mat-chip-option>
+                        }
+                    </mat-chip-listbox>
+                </div>
+                <div class="filters__modal__types__type">
+                    <h6>Format</h6>
+                    <mat-chip-listbox multiple>
+                        @for (format of filters.format; track format) {
+                            <mat-chip-option (click)="handleOptionFilter('format', $index)" [selected]="format.selected">
+                                {{ format.attributes.name.en }}
+                            </mat-chip-option>
+                        }
+                    </mat-chip-listbox>
+                </div>
+                <div class="filters__modal__types__type">
+                    <h6>Genre</h6>
+                    <mat-chip-listbox multiple>
+                        @for (genre of filters.genre; track genre) {
+                            <mat-chip-option (click)="handleOptionFilter('genre', $index)" [selected]="genre.selected">
+                                {{ genre.attributes.name.en }}
+                            </mat-chip-option>
+                        }
+                    </mat-chip-listbox>
+                </div>
+                
+                <div class="filters__modal__types__type">
+                    <h6>Theme</h6>
+                    <mat-chip-listbox multiple>
+                        @for (theme of filters.theme; track theme) {
+                            <mat-chip-option (click)="handleOptionFilter('theme', $index)" [selected]="theme.selected">
+                                {{ theme.attributes.name.en }}
+                            </mat-chip-option>
+                        }
+                    </mat-chip-listbox>
+                </div>
             </div>
-            <div class="filters__modal__type">
-                <h6>Format</h6>
-                <mat-chip-listbox>
-                    @for (format of filters.format; track format) {
-                        <mat-chip-option>
-                            {{ format.attributes.name.en }}
-                        </mat-chip-option>
-                    }
-                </mat-chip-listbox>
-            </div>
-            <div class="filters__modal__type">
-                <h6>Genre</h6>
-                <mat-chip-listbox>
-                    @for (genre of filters.genre; track genre) {
-                        <mat-chip-option>
-                            {{ genre.attributes.name.en }}
-                        </mat-chip-option>
-                    }
-                </mat-chip-listbox>
-            </div>
-            
-            <div class="filters__modal__type">
-                <h6>Theme</h6>
-                <mat-chip-listbox>
-                    @for (theme of filters.theme; track theme) {
-                        <mat-chip-option>
-                            {{ theme.attributes.name.en }}
-                        </mat-chip-option>
-                    }
-                </mat-chip-listbox>
-            </div>
-            <button mat-flat-button class="mt">Search</button>
+            <button mat-flat-button class="mt" (click)="handleGetByFilter()">Search</button>
         </div>
-        <div class="filters__background" (click)="handleShow()"></div>
+        <div class="filters__background" (click)="handleScrollBar()"></div>
     }
 </div>
