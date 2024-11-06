@@ -1,4 +1,13 @@
 <div class="card">
-    <img height="300" width="200" [src]="cover_url" />
+    <img 
+        [ngSrc]="cover_url"
+        height="300" 
+        width="200" 
+        loading="lazy"
+        (load)="imageLoaded"
+        [ngClass]="{
+            'not-loaded': !imageLoaded
+        }"
+    />
     <span>{{ title }}</span>
 </div>
