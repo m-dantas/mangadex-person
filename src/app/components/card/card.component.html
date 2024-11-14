@@ -1,13 +1,4 @@
 <div class="card">
-    <img 
-        [ngSrc]="cover_url"
-        height="300" 
-        width="200" 
-        loading="lazy"
-        (load)="imageLoaded"
-        [ngClass]="{
-            'not-loaded': !imageLoaded
-        }"
-    />
-    <span>{{ title }}</span>
+    <app-image-loading [cover_url]="cover_url" [widthCard]="200" [heightCard]="300" [altCard]="'Thumbnail comic of ' + title" />
+    <a [href]="'/details/' + manga_id">{{ title }}</a>
 </div>

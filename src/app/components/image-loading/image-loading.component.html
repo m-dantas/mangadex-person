@@ -1,0 +1,12 @@
+<img
+    class="image-loading"
+    [ngSrc]="cover_url"
+    [height]="heightCard" 
+    [width]="widthCard" 
+    loading="lazy"
+    (load)="imageLoaded"
+    [ngClass]="{
+        'not-loaded': !imageLoaded
+    }"
+    [alt]="altCard"
+>
