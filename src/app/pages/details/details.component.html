@@ -1,0 +1,28 @@
+<div class="details container">
+    <div class="details__background" [ngStyle]="{
+        'background-image': 'url(https://uploads.mangadex.org/covers/' + getCoverUrl() + ')'
+    }"></div>
+
+    <section class="details__description">
+        <app-image-loading
+            class="details__description__thumb"
+            [heightCard]="350"
+            [widthCard]="250"
+            [cover_url]="getCoverUrl()"
+            [altCard]="'Thumbnail comic of ' + details.data.attributes.title.en"
+        />
+        <div class="details__description__text">
+            <div class="details__description__text__titles">
+                <h3 class="details__description__text__titles__primary">{{ details.data.attributes.title.en }}</h3>
+                <span class="details__description__text__titles__secondary">{{ getAltTitlesToString() }}</span>
+            </div>
+            
+            <div class="details__description__text__tags">
+                @for (item of details.data.attributes.tags; track $index) {
+                    <div class="details__description__text__tags__tag">{{ item.attributes.name.en }}</div>
+                }
+            </div>
+            <p class="details__description__text__sinopse">{{ details.data.attributes.description.en }}</p>
+        </div>
+    </section>
+</div>
