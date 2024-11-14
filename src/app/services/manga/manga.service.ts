@@ -1,7 +1,8 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Response } from '../commons'
+import { ResponseArray, ResponseObject } from '../commons'
 import { Manga } from './types';
+
 
 @Injectable({
   providedIn: 'root'
@@ -18,6 +19,14 @@ export class MangaService {
     if (params) {
       baseURL = baseURL + `&${params}`
     }
-    return this.http.get<Response<Manga>>(`${baseURL}&includes[]=cover_art&order[title]=asc`)
+    return this.http.get<ResponseArray<Manga>>(`${baseURL}&includes[]=cover_art&order[title]=asc`)
+  }
+
+  details (id: string) {
+    return this.http.get<ResponseObject<Manga>>(`https://api.mangadex.org/manga/${id}?includes[]=cover_art`)
+  }
+
+  volumes (id: string) {
+    return this.http.get(`https://api.mangadex.org/manga/${id}/aggregate`)
   }
 }

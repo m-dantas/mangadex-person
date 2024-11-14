@@ -13,7 +13,7 @@ type attributes = {
     status: string,
     year: string | null,
     contentRating: string,
-    tags: [],
+    tags: tags[],
     state: string,
     chapterNumbersResetOnNewVolume: number,
     createdAt: string,
@@ -34,6 +34,20 @@ type relationships = {
         volume: string | null
     },
     id: string,
+    type: string
+}
+
+type tags = {
+    attributes: {
+        name: {
+            en: string
+        }, 
+        description: {}, 
+        group: string, 
+        version: number
+    }
+    id: string,
+    relationships: relationships[]
     type: string
 }
 
