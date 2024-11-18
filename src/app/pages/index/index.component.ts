@@ -3,6 +3,7 @@ import { MangaService } from '../../services/manga/manga.service';
 import { Manga } from '../../services/manga/types';
 import { CardComponent } from '../../components/card/card.component';
 import { FiltersComponent } from '../../components/filters/filters.component';
+import { GET_COVER_URL } from '../../utils/get-cover-url';
 @Component({
   selector: 'app-index',
   standalone: true,
@@ -19,9 +20,8 @@ export class IndexComponent {
     this.mangaService.list(1).subscribe(res => this.mangas = res.data)
   }
 
-  coverUrl (manga: Manga) {
-    const filename = manga.relationships.find(item => item.type === 'cover_art')?.attributes?.fileName
-    return `${manga.id}/${filename}.256.jpg`
+  getCoverUrl (manga: Manga) {
+    return GET_COVER_URL(manga, true)
   }
 
   handleGetMangaFiltered (params: string) {

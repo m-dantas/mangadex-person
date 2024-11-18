@@ -15,10 +15,15 @@
         opacity: 0.1;
     }
 
-    &__description {
-        display: flex; 
+    &__description, &__chapters {
+        padding: 0 34px 0 34px;
+        display: flex;
         color: #fff;
-        padding: 34px;
+    }
+
+    &__description {
+        margin-bottom: 40px;
+        padding-top: 34px;
 
         &__thumb {
             margin-right: 30px;
@@ -71,5 +76,47 @@
         }
     }
 
-    
+    &__chapters {
+        flex-direction: column;
+        &__title {
+            font-weight: bold;
+            font-size: 32px;
+            margin: 0;
+            margin-bottom: 20px;
+        }
+
+        &__volume {
+
+            &__title {
+                font-weight: 500;
+                font-size: 24px;
+                margin: 0;
+            }
+
+            &__grid {
+                display: flex;
+                width: 100%;
+                flex-wrap: wrap;
+
+                &__chapter {
+                    background-color: #5A638D;
+                    margin-right: 40px;
+                    margin-bottom: 20px;
+                    color: #B4BAD7;
+                    min-width: 210px;
+                    min-height: 60px;
+                    font-size: 16px;
+                    display: flex;
+                    align-items: center;
+                    border-radius: 10px;
+                    justify-content: space-between;
+                    padding: 16px;
+
+                    &:nth-child(5n) {
+                        margin-right: 0;
+                    }
+                }
+            }
+        }
+    }
 }

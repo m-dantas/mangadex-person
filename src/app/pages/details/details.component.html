@@ -9,20 +9,53 @@
             [heightCard]="350"
             [widthCard]="250"
             [cover_url]="getCoverUrl()"
-            [altCard]="'Thumbnail comic of ' + details.data.attributes.title.en"
+            [altCard]="'Thumbnail comic of ' + details.attributes.title.en"
         />
         <div class="details__description__text">
             <div class="details__description__text__titles">
-                <h3 class="details__description__text__titles__primary">{{ details.data.attributes.title.en }}</h3>
+                <h3 class="details__description__text__titles__primary">{{ details.attributes.title.en }}</h3>
                 <span class="details__description__text__titles__secondary">{{ getAltTitlesToString() }}</span>
             </div>
             
             <div class="details__description__text__tags">
-                @for (item of details.data.attributes.tags; track $index) {
+                @for (item of details.attributes.tags; track $index) {
                     <div class="details__description__text__tags__tag">{{ item.attributes.name.en }}</div>
                 }
             </div>
-            <p class="details__description__text__sinopse">{{ details.data.attributes.description.en }}</p>
+            <p class="details__description__text__sinopse">{{ details.attributes.description.en }}</p>
+        </div>
+    </section>
+
+    <section class="details__chapters">
+        <h3 class="details__chapters__title">Chapters</h3>
+        <div class="details__chapters__volume">
+            <h4 class="details__chapters__volume__title">Volume 1</h4>
+            <div class="details__chapters__volume__grid">
+                <a class="details__chapters__volume__grid__chapter" href="#">
+                    Chapter 1
+                    <mat-icon fontIcon="open_in_new"></mat-icon>
+                </a>
+                <a class="details__chapters__volume__grid__chapter" href="#">
+                    Chapter 1
+                    <mat-icon fontIcon="open_in_new"></mat-icon>
+                </a>
+                <a class="details__chapters__volume__grid__chapter" href="#">
+                    Chapter 1
+                    <mat-icon fontIcon="open_in_new"></mat-icon>
+                </a>
+                <a class="details__chapters__volume__grid__chapter" href="#">
+                    Chapter 1
+                    <mat-icon fontIcon="open_in_new"></mat-icon>
+                </a>
+                <a class="details__chapters__volume__grid__chapter" href="#">
+                    Chapter 1
+                    <mat-icon fontIcon="open_in_new"></mat-icon>
+                </a>
+                <a class="details__chapters__volume__grid__chapter" href="#">
+                    Chapter 1
+                    <mat-icon fontIcon="open_in_new"></mat-icon>
+                </a>
+            </div>
         </div>
     </section>
 </div>
