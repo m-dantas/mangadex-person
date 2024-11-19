@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { ResponseArray, ResponseObject } from '../commons'
-import { Manga } from './types';
+import { Manga, VolumeObj } from './types';
 
 
 @Injectable({
@@ -27,6 +27,6 @@ export class MangaService {
   }
 
   volumes (id: string) {
-    return this.http.get(`https://api.mangadex.org/manga/${id}/aggregate`)
+    return this.http.get<{ result: string, volumes: VolumeObj}>(`https://api.mangadex.org/manga/${id}/aggregate`)
   }
 }

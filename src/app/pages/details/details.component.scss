@@ -85,6 +85,11 @@
             margin-bottom: 20px;
         }
 
+        &__filters {
+            display: flex;
+            justify-content: flex-end;
+        }
+
         &__volume {
 
             &__title {

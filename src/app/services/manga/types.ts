@@ -51,9 +51,32 @@ type tags = {
     type: string
 }
 
+type ChapterObject = {
+    chapter: string,
+    count: number,
+    id: string,
+    others: string[],
+}
+
+export type Chapters = {
+    chapters: ChapterObject[]
+    count: number,
+    volume: string
+}
+
 export type Manga = {
     id: string,
     type: string,
     attributes: attributes,
     relationships: relationships[]
+}
+
+export type VolumeObj = {
+    [key: string]: {
+        chapters: {
+            [key: number]: ChapterObject
+        },
+        count: number,
+        volume: string
+    }
 }

@@ -28,34 +28,28 @@
 
     <section class="details__chapters">
         <h3 class="details__chapters__title">Chapters</h3>
-        <div class="details__chapters__volume">
-            <h4 class="details__chapters__volume__title">Volume 1</h4>
-            <div class="details__chapters__volume__grid">
-                <a class="details__chapters__volume__grid__chapter" href="#">
-                    Chapter 1
-                    <mat-icon fontIcon="open_in_new"></mat-icon>
-                </a>
-                <a class="details__chapters__volume__grid__chapter" href="#">
-                    Chapter 1
-                    <mat-icon fontIcon="open_in_new"></mat-icon>
-                </a>
-                <a class="details__chapters__volume__grid__chapter" href="#">
-                    Chapter 1
-                    <mat-icon fontIcon="open_in_new"></mat-icon>
-                </a>
-                <a class="details__chapters__volume__grid__chapter" href="#">
-                    Chapter 1
-                    <mat-icon fontIcon="open_in_new"></mat-icon>
-                </a>
-                <a class="details__chapters__volume__grid__chapter" href="#">
-                    Chapter 1
-                    <mat-icon fontIcon="open_in_new"></mat-icon>
-                </a>
-                <a class="details__chapters__volume__grid__chapter" href="#">
-                    Chapter 1
-                    <mat-icon fontIcon="open_in_new"></mat-icon>
-                </a>
+        <!-- <div class="details__chapters__filters">
+            <button mat-fab extended>
+                Order
+                <mat-icon>swap_vert</mat-icon>
+            </button>
+            <button mat-fab extended>
+                Order
+                <mat-icon>swap_vert</mat-icon>
+            </button>
+        </div> -->
+        @for (item of paginated.items[paginated.page]; track $index) {
+            <div class="details__chapters__volume">
+                <h4 class="details__chapters__volume__title">Volume {{ item.volume }}</h4>
+                <div class="details__chapters__volume__grid">
+                    @for (chapter of item.chapters; track $index) {
+                        <a class="details__chapters__volume__grid__chapter" href="#">
+                            Chapter {{ chapter.chapter }}
+                            <mat-icon fontIcon="open_in_new"></mat-icon>
+                        </a>
+                    }
+                </div>
             </div>
-        </div>
+        }
     </section>
 </div>
