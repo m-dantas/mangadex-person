@@ -5,7 +5,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { Chapters, Manga } from '../../services/manga/types';
 import { ImageLoadingComponent } from "../../components/image-loading/image-loading.component";
 import { GET_COVER_URL } from '../../utils/get-cover-url'
-import { MatPaginatorModule, PageEvent } from '@angular/material/paginator';
+import { PaginationComponent } from "../../components/pagination/pagination.component";
 
 type PaginatedType = {
   items: Array<Array<Chapters>>,
@@ -16,7 +16,7 @@ type PaginatedType = {
 @Component({
   selector: 'app-details',
   standalone: true,
-  imports: [CommonModule, ImageLoadingComponent, MatIconModule],
+  imports: [CommonModule, ImageLoadingComponent, MatIconModule, PaginationComponent],
   templateUrl: './details.component.html',
   styleUrl: './details.component.scss'
 })
@@ -34,7 +34,7 @@ export class DetailsComponent {
   
 
   ngOnInit () {
-    this.paginated = this.createPaginatedVolumes()
+    this.paginated = this.createPaginatedVolumes(true)
   }
   
   getAltTitlesToString () {
@@ -43,10 +43,14 @@ export class DetailsComponent {
     }).join(', ')
   }
 
-  createPaginatedVolumes (): PaginatedType {
+  createPaginatedVolumes (reverse: boolean = false): PaginatedType {
     let index = 0
-    let paginated: Array<Array<Chapters>> = [] 
-    this.volumes.forEach((volume) => {
+    let paginated: Array<Array<Chapters>> = []
+    let cloneVolumes = this.volumes;
+    
+    if (reverse) { cloneVolumes = cloneVolumes.reverse() }
+
+    cloneVolumes.forEach((volume) => {
       // Se o resultado for "undefined" quer dizer que a posição do index está vazia, ele atribuia um `new Array` para se tornar um item de array na Matriz
       if (paginated[index] === undefined) paginated[index] = [];
       paginated[index].push(volume)
@@ -57,12 +61,12 @@ export class DetailsComponent {
     return {
       items: paginated,
       page: 0,
-      maxPage: this.volumes.length
+      maxPage: paginated.length
     }
   }
 
-  handleChangePageIndex (e: PageEvent) {
-    this.paginated.page = e.pageIndex
+  handleChangePageIndex (page: number) {
+    this.paginated.page = page
   }
 
   getCoverUrl () {

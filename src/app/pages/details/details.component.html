@@ -40,16 +40,27 @@
         </div> -->
         @for (item of paginated.items[paginated.page]; track $index) {
             <div class="details__chapters__volume">
-                <h4 class="details__chapters__volume__title">Volume {{ item.volume }}</h4>
+                @if (item.volume.toLowerCase() === 'none') {
+                    <h4 class="details__chapters__volume__title">Not compiled in volume</h4>
+                } @else { 
+                    <h4 class="details__chapters__volume__title">Volume {{ item.volume }}</h4>
+                }
                 <div class="details__chapters__volume__grid">
                     @for (chapter of item.chapters; track $index) {
                         <a class="details__chapters__volume__grid__chapter" href="#">
                             Chapter {{ chapter.chapter }}
-                            <mat-icon fontIcon="open_in_new"></mat-icon>
+                            <mat-icon>open_in_new</mat-icon>
                         </a>
                     }
                 </div>
             </div>
+        } @empty { 
+            <div class="details__chapters__empty">
+                <mat-icon>info</mat-icon>
+                No Chapters
+            </div>
         }
+
+        <app-pagination *ngIf="paginated.maxPage !== 0" [maxPage]="paginated.maxPage" (handleCurrentPage)="handleChangePageIndex($event)" />
     </section>
 </div>

@@ -1,0 +1,19 @@
+<div class="pagination">
+    <button 
+        class="pagination__action"
+        (click)="!disabledPreviousPage() && handlePreviousPage()"
+        [disabled]="disabledPreviousPage()"
+    >
+        <mat-icon>chevron_left</mat-icon>    
+    </button>
+    <div class="pagination__counter">
+        {{ currentPage + 1 }}/{{ maxPage }}
+    </div>
+    <button
+        class="pagination__action"
+        (click)="!disabledNextPage() && handleNextPage()"
+        [disabled]="disabledNextPage()"
+    >
+        <mat-icon>chevron_right</mat-icon>    
+    </button>
+</div>
