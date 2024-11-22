@@ -14,7 +14,7 @@ export class MangaService {
 
   list (offset: number = 1, params: string = '') {
     const calcOffset = 32 * (offset - 1)
-    let baseURL = `https://api.mangadex.org/manga?limit=32&offset=${calcOffset}`
+    let baseURL = `/api/manga?limit=32&offset=${calcOffset}`
 
     if (params) {
       baseURL = baseURL + `&${params}`
@@ -23,10 +23,10 @@ export class MangaService {
   }
 
   details (id: string) {
-    return this.http.get<ResponseObject<Manga>>(`https://api.mangadex.org/manga/${id}?includes[]=cover_art`)
+    return this.http.get<ResponseObject<Manga>>(`api/manga/${id}?includes[]=cover_art`)
   }
 
   volumes (id: string) {
-    return this.http.get<{ result: string, volumes: VolumeObj}>(`https://api.mangadex.org/manga/${id}/aggregate`)
+    return this.http.get<{ result: string, volumes: VolumeObj}>(`api/manga/${id}/aggregate`)
   }
 }
