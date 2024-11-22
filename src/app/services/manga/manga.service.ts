@@ -23,10 +23,10 @@ export class MangaService {
   }
 
   details (id: string) {
-    return this.http.get<ResponseObject<Manga>>(`api/manga/${id}?includes[]=cover_art`)
+    return this.http.get<ResponseObject<Manga>>(`/api/manga/${id}?includes[]=cover_art`)
   }
 
   volumes (id: string) {
-    return this.http.get<{ result: string, volumes: VolumeObj}>(`api/manga/${id}/aggregate`)
+    return this.http.get<{ result: string, volumes: VolumeObj}>(`/api/manga/${id}/aggregate`)
   }
 }

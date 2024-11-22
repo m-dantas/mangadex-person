@@ -4,6 +4,14 @@
         "source": "/api/:path*",
         "destination": "https://api.mangadex.org/:path*"
       }
+    ],
+    "headers": [
+      {
+        "source": "/api/:path*",
+        "headers": [
+          { "key": "Via", "value": "" }
+        ]
+      }
     ]
   }
   

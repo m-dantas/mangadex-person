@@ -11,6 +11,6 @@ export class TagService {
   constructor(private http: HttpClient) { }
 
   list () {
-    return this.http.get<ResponseArray<Tag>>('https://api.mangadex.org/manga/tag')
+    return this.http.get<ResponseArray<Tag>>('/api/manga/tag')
   }
 }
