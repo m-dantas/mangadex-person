@@ -1,9 +1,0 @@
-services:
-  - type: web
-    name: angular-app
-    env: node
-    buildCommand: npm install && npm run build --prod
-    startCommand: serve -s dist
-    routes:
-      - source: /api/*
-        destination: https://api.mangadex.org/*

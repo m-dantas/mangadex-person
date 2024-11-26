@@ -7,5 +7,14 @@
       "pathRewrite": {
         "^/api": ""
       }
+    },
+    "/covers": {
+      "target": "https://uploads.mangadex.org/covers/",
+      "secure": false,
+      "changeOrigin": true,
+      "logLevel": "debug",
+      "pathRewrite": {
+        "^/covers": ""
+      }
     }
 }
