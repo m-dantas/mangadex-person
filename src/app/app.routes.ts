@@ -5,11 +5,16 @@ import { DetailsComponent } from './pages/details/details.component'
 import { inject } from '@angular/core';
 import { MangaService } from './services/manga/manga.service';
 import { map } from 'rxjs';
+import { TesteComponent } from './components/teste/teste.component';
 
 export const routes: Routes = [
     {
         path: '',
         component: IndexComponent
+    },
+    {
+        path: 'teste',
+        component: TesteComponent
     },
     {
         path: 'details/:id',
