@@ -6,7 +6,7 @@ import { HTTP_INTERCEPTORS, provideHttpClient, withFetch, withInterceptorsFromDi
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 import { LoadingInterceptor } from './interceptors/loading.interceptor';
 import { provideImgixLoader } from '@angular/common';
-import { environment } from '../environments/environments'
+import { environment } from '../environments/environment'
 
 export const appConfig: ApplicationConfig = {
   providers: [
